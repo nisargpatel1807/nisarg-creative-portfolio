@@ -1,5 +1,11 @@
 /* Mobile performance layer: retains the visual identity while reducing GPU-heavy work. */
 @media (max-width: 800px), (hover: none) and (pointer: coarse) {
+  /* On phones, avoid scroll-triggered opacity toggles: content is always readable. */
+  .reveal, .reveal.is-visible {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
   /* The canvas keeps a small live constellation; JS reduces particles, resolution and frame rate. */
   .live-field {
     opacity: .24 !important;

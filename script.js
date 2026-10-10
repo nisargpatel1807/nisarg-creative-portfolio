@@ -45,17 +45,33 @@
   }
 
   const revealNodes = $$('.reveal');
-  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const revealObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('is-visible');
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
-    revealNodes.forEach(node => revealObserver.observe(node));
-  } else revealNodes.forEach(node => node.classList.add('is-visible'));
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const desktopFinePointer = window.matchMedia('(min-width: 801px) and (hover: hover) and (pointer: fine)').matches;
+  const canAnimateReveals = !prefersReducedMotion && desktopFinePointer && 'IntersectionObserver' in window;
+
+  if (canAnimateReveals && revealNodes.length) {
+    let revealObserver;
+    try {
+      revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -20px 0px' });
+      document.documentElement.classList.add('reveal-enabled');
+      revealNodes.forEach(node => revealObserver.observe(node));
+    } catch (error) {
+      // If reveal setup fails, remove the hiding state rather than leaving content invisible.
+      revealObserver?.disconnect();
+      document.documentElement.classList.remove('reveal-enabled');
+      revealNodes.forEach(node => node.classList.add('is-visible'));
+    }
+  } else {
+    // Mobile, reduced-motion and unsupported browsers get fully visible content by default.
+    revealNodes.forEach(node => node.classList.add('is-visible'));
+  }
 
   // Add section-aware navigation, without creating extra animation work during scroll.
   const sections = ['work', 'collegeProjects', 'process', 'about', 'skills', 'contact'].map(id => document.getElementById(id)).filter(Boolean);

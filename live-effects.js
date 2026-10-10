@@ -49,7 +49,7 @@
     canvas.style.height = `${height}px`;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     makeParticles();
-    if (reduced) draw(0, true);
+    if (reduced || mobileOptimized) draw(0, true);
   }
 
   function drawWaves(t) {
@@ -173,7 +173,7 @@
     lastFrame = t;
     raf = requestAnimationFrame(frame);
   }
-  function start() { if (!reduced && !raf && !document.hidden) raf = requestAnimationFrame(frame); }
+  function start() { if (!reduced && !mobileOptimized && !raf && !document.hidden) raf = requestAnimationFrame(frame); }
   function stop() { if (raf) cancelAnimationFrame(raf); raf = 0; }
 
   window.addEventListener('resize', resize, { passive: true });
@@ -189,7 +189,7 @@
   document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); else start(); });
 
   resize();
-  if (reduced) draw(0, true); else start();
+  if (!reduced && !mobileOptimized) start();
 
   // Card spotlight and restrained 2.2-degree tilt add responsive live feedback.
   if (finePointer && !reduced) {
