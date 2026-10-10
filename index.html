@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b12">
+  <meta name="description" content="Nisarg Patel — aspiring UI/UX designer exploring thoughtful interfaces, interaction design and useful digital experiences.">
+  <title>Nisarg Patel — UI/UX & Digital Design</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="live-effects.css">
+  <link rel="stylesheet" href="signature-refinement.css">
+</head>
+<body class="home-page">
+  <div class="live-backdrop" aria-hidden="true"></div>
+  <canvas class="live-field" id="liveField" aria-hidden="true"></canvas>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <div class="ambient ambient-three" aria-hidden="true"></div>
+  <div class="pointer-glow" id="pointerGlow" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursorRing" aria-hidden="true"><span>VIEW</span></div>
+
+  <header class="site-header" id="siteHeader">
+    <nav class="nav-shell" aria-label="Main navigation">
+      <a class="brand" href="index.html#top" aria-label="Nisarg Patel — home"><span class="brand-symbol">N<span>.</span></span><span class="brand-copy">NISARG PATEL<small>DESIGN PORTFOLIO</small></span></a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open navigation"><span></span><span></span></button>
+      <div class="nav-links" id="navLinks">
+        <a href="#work" data-nav="work">Work</a>
+        <a href="#process" data-nav="process">Process</a>
+        <a href="#about" data-nav="about">About</a>
+        <a href="#skills" data-nav="skills">Skills</a>
+        <a class="nav-contact magnetic" href="mailto:nisargpatel1807@gmail.com" aria-label="Email Nisarg Patel">Email <span class="arrow">↗</span></a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero section-wrap" aria-labelledby="heroHeading">
+      <div class="hero-gridline" aria-hidden="true"></div>
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow hero-eyebrow reveal"><span class="live-dot"></span> UI/UX DESIGNER IN THE MAKING <span class="eyebrow-location">AHMEDABAD, INDIA</span></div>
+          <h1 id="heroHeading" class="hero-title reveal">Designing digital<br>experiences with<br><em>intention.</em></h1>
+          <p class="hero-description reveal">Hey, I’m Nisarg — an MCA student exploring how people use digital products. I’m learning to turn complex tasks into clear, thoughtful and visually engaging interfaces.</p>
+          <div class="hero-actions reveal">
+            <a class="button button-primary magnetic" href="#work"><span>Explore my work</span><span class="button-icon">↗</span></a>
+            <a class="button button-quiet" href="#about"><span class="quiet-line"></span><span>About me</span></a>
+          </div>
+          <div class="hero-meta reveal">
+            <div><span class="meta-label">CURRENT FOCUS</span><strong>CampusCore · Product thinking</strong></div>
+            <div><span class="meta-label">ALSO EXPLORING</span><strong>HTML · CSS · JavaScript</strong></div>
+          </div>
+        </div>
+        <div class="hero-visual reveal" id="heroVisual" aria-label="Abstract blue glass sculpture representing creative exploration">
+          <div class="visual-halo"></div>
+          <img class="hero-art" src="assets/hero-art.svg" alt="Abstract blue glass ribbons and translucent geometric forms">
+          <div class="hero-orbit-label orbit-label-top"><span class="orbit-label-dot"></span> CREATIVE EXPLORATION</div>
+          <div class="floating-glass glass-note glass-note-top"><span class="note-index">01</span><span>Curious<br>by nature</span></div>
+          <div class="floating-glass glass-note glass-note-bottom"><span class="note-pulse"></span><span>Learning<br>by making</span></div>
+        </div>
+      </div>
+      <div class="hero-bottom reveal"><span>SCROLL TO EXPLORE</span><span class="scroll-guide"><i></i></span><span class="hero-bottom-thought">GOOD DESIGN MAKES THE NEXT STEP FEEL CLEAR.</span></div>
+    </section>
+
+    <div class="ticker-band" aria-label="Areas of interest"><div class="ticker-track"><span>USER EXPERIENCE</span><b>✳</b><span>INTERFACE DESIGN</span><b>✳</b><span>PROTOTYPING</span><b>✳</b><span>DESIGN SYSTEMS</span><b>✳</b><span>RESPONSIVE UI</span><b>✳</b><span>USER EXPERIENCE</span><b>✳</b><span>INTERFACE DESIGN</span><b>✳</b><span>PROTOTYPING</span><b>✳</b><span>DESIGN SYSTEMS</span><b>✳</b><span>RESPONSIVE UI</span><b>✳</b></div></div>
+
+    <!-- Featured independent UI/UX design project: deliberately above academic work. -->
+    <section class="saathi-showcase-section section-wrap" id="work" aria-labelledby="designLabHeading">
+      <div class="saathi-showcase-top reveal">
+        <p class="section-kicker"><span>01</span> / INDEPENDENT UI·UX PROJECT</p>
+        <div class="saathi-top-actions"><span class="saathi-status"><i></i> DESIGN IN PROGRESS</span><a class="saathi-skip-link" href="#collegeProjects">College projects <span>↘</span></a></div>
+      </div>
+      <article class="saathi-showcase-card reveal">
+        <div class="saathi-showcase-copy">
+          <div class="saathi-wordmark"><span class="saathi-wordmark-mark">S<span>.</span></span><span>SAATHI <small>HEALTHCARE · MOBILE UX</small></span></div>
+          <p class="saathi-category">A MORE HUMAN WAY TO FIND CARE</p>
+          <h2 id="designLabHeading">SAATHI<span class="saathi-title-dot">.</span></h2>
+          <p class="saathi-description">A healthcare appointment app concept exploring a calmer journey from finding a doctor to reviewing appointment details. I’m refining the screens and interactions in Figma, with clarity and approachable steps at the centre.</p>
+          <div class="saathi-feature-points"><span><i>01</i> Find a doctor</span><span><i>02</i> Choose a time</span><span><i>03</i> Review details</span></div>
+          <div class="project-tags saathi-tags"><span>Figma</span><span>Wireframes</span><span>Prototype in progress</span></div>
+          <div class="saathi-actions">
+            <a class="button button-primary magnetic saathi-primary" href="project.html?project=saathi"><span>Explore the design journey</span><span class="button-icon">↗</span></a>
+            <a class="button button-quiet saathi-secondary" href="#collegeProjects"><span class="quiet-line"></span><span>See college projects</span></a>
+          </div>
+          <div class="saathi-copy-foot"><span class="saathi-foot-dot"></span><span>CONCEPT IN PROGRESS · FINAL SCREENS BEING REFINED</span></div>
+        </div>
+        <div class="saathi-visual-shell" role="img" aria-label="Illustrative SAATHI healthcare interface direction, currently being refined">
+          <div class="saathi-visual-topline"><span><i></i> INTERFACE STUDY / 001</span><span>FIGMA · EXPLORATION</span></div>
+          <div class="saathi-visual-field" aria-hidden="true">
+            <div class="saathi-field-grid"></div><div class="saathi-field-orbit orbit-one"></div><div class="saathi-field-orbit orbit-two"></div><div class="saathi-field-glow"></div>
+            <div class="saathi-float-chip saathi-chip-one"><span>01</span> DISCOVER</div>
+            <div class="saathi-float-chip saathi-chip-two"><span>02</span> BOOKING FLOW</div>
+            <div class="saathi-phone saathi-phone-back">
+              <div class="saathi-phone-notch"></div><div class="saathi-phone-top"><b>saathi<span>.</span></b><i>•••</i></div>
+              <div class="saathi-confirm-mark">✓</div><p class="saathi-phone-eyebrow">APPOINTMENT SUMMARY</p><h3>You’re all set.</h3><p class="saathi-phone-copy">Your appointment details, together in one place.</p>
+              <div class="saathi-mini-summary"><small>CLINIC VISIT</small><b>Dr. Priya Shah</b><span>Tomorrow · 10:30 AM</span></div><div class="saathi-phone-button">View appointment <b>↗</b></div><div class="saathi-phone-tabline"><i></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="saathi-phone saathi-phone-main">
+              <div class="saathi-phone-notch"></div><div class="saathi-phone-top"><b>saathi<span>.</span></b><i>◉</i></div>
+              <p class="saathi-phone-eyebrow">GOOD MORNING</p><h3>Find your care.</h3>
+              <div class="saathi-search"><span>⌕</span> Search doctors or specialties</div>
+              <div class="saathi-specialty-row"><div><i>✚</i><small>General</small></div><div><i>♡</i><small>Cardio</small></div><div><i>✳</i><small>Skin</small></div></div>
+              <div class="saathi-book-card"><small>BOOK AN APPOINTMENT</small><b>Find the right doctor for you.</b><span>Explore doctors <i>↗</i></span></div>
+              <div class="saathi-nearby"><span class="saathi-avatar">P</span><span><small>NEARBY DOCTOR</small><b>Dr. Priya Shah</b></span><i>→</i></div>
+              <div class="saathi-phone-tabline"><i class="active"></i><i></i><i></i><i></i></div>
+            </div>
+            <div class="saathi-float-label"><span class="saathi-label-spark">✳</span><span><small>DESIGN PRINCIPLE</small><b>Clear steps. Calmer care.</b></span></div>
+          </div>
+          <div class="saathi-visual-bottom"><span>VISUAL DIRECTION</span><span>SCREENS IN REFINEMENT <b>↗</b></span></div>
+        </div>
+        <div class="saathi-card-index" aria-hidden="true"><span>FEATURED DESIGN PROJECT</span><b>01 <i>/</i> 04</b></div>
+      </article>
+    </section>
+
+    <!-- Academic/software projects: CampusCore belongs with MedCore and WhereNext. -->
+    <section class="work-section college-projects-section section-wrap" id="collegeProjects" aria-labelledby="workHeading">
+      <div class="section-head reveal academic-section-head">
+        <div><p class="section-kicker"><span>02</span> / ACADEMIC SOFTWARE PROJECTS</p><h2 id="workHeading">Built for<br><em>different needs.</em></h2></div>
+        <div class="section-head-side academic-head-side"><p>Three college projects across campus operations, pharmacy management and travel planning. Each project opens its own overview, with the available scope and technology context.</p><a class="project-archive-link" href="#academicGrid"><span class="archive-link-count">03</span><span><small>PROJECT ARCHIVE</small><b>Browse college work</b></span><i>↓</i></a></div>
+      </div>
+      <div class="project-grid academic-grid" id="academicGrid">
+        <article class="project-card project-campus reveal" data-category="academic" data-project-card>
+          <a class="project-cover campuscore-cover interactive-card" href="project.html?project=campuscore" aria-label="View CampusCore academic project overview">
+            <img src="assets/campuscore-cover.svg" alt="Illustrative CampusCore dashboard preview showing study planner, campus notices, helpdesk and role-based access modules">
+            <span class="cover-top-label">COLLEGE PROJECT <span>01 / 03</span></span><span class="campus-cover-sticker"><i></i> SMART CAMPUS</span>
+            <span class="cover-hover"><span>OPEN PROJECT</span><b>↗</b></span>
+          </a>
+          <div class="project-copy"><div class="project-overline"><span class="project-type"><i class="type-dot type-blue"></i> SMART CAMPUS / WEB APP</span><span class="project-number">01</span></div><h3><a href="project.html?project=campuscore">CampusCore <span class="title-arrow">↗</span></a></h3><p>A smart campus management system connecting role-based dashboards with study planning, campus notices, helpdesk requests and notifications.</p><div class="project-tags"><span>React</span><span>Node.js / Express</span><span>Role-based modules</span></div><a class="project-text-link" href="project.html?project=campuscore">View CampusCore <span>↗</span></a></div>
+        </article>
+
+        <article class="project-card project-medcore reveal" data-category="academic" data-project-card>
+          <a class="project-cover text-cover medcore-cover interactive-card" href="project.html?project=medcore" aria-label="View MedCore academic project overview">
+            <span class="cover-top-label">COLLEGE PROJECT <span>02 / 03</span></span>
+            <div class="medcore-visual-system" aria-hidden="true"><div class="medcore-plus">＋</div><div class="medcore-rx-watermark">Rx</div><div class="medcore-product-orbit orbit-a"></div><div class="medcore-product-orbit orbit-b"></div><div class="medcore-medicine-tile tile-one"><i></i><span></span></div><div class="medcore-medicine-tile tile-two"><i></i><span></span></div><div class="medcore-mini-tag">PHARMACY / WEB</div></div>
+            <div class="text-cover-main medcore-cover-main"><p class="cover-mini-label">PHARMACY MANAGEMENT</p><strong>MedCore</strong><span class="cover-descriptor">Organising medicine information with clarity.</span><span class="cover-stack">PYTHON <i>·</i> HTML / CSS <i>·</i> MYSQL</span></div><span class="cover-hover"><span>OPEN PROJECT</span><b>↗</b></span>
+          </a>
+          <div class="project-copy"><div class="project-overline"><span class="project-type"><i class="type-dot type-cyan"></i> PHARMACY / WEB</span><span class="project-number">02</span></div><h3><a href="project.html?project=medcore">MedCore <span class="title-arrow">↗</span></a></h3><p>An online pharmacy management project focused on organising medicine-related information and presenting product categories clearly.</p><div class="project-tags"><span>Python</span><span>HTML / CSS</span><span>MySQL</span></div><a class="project-text-link" href="project.html?project=medcore">View MedCore <span>↗</span></a></div>
+        </article>
+
+        <article class="project-card project-wherenext reveal" data-category="academic" data-project-card>
+          <a class="project-cover text-cover wherenext-cover interactive-card" href="project.html?project=wherenext" aria-label="View WhereNext academic project overview">
+            <span class="cover-top-label">COLLEGE PROJECT <span>03 / 03</span></span>
+            <div class="wherenext-visual-system" aria-hidden="true"><div class="travel-sun"></div><div class="travel-contour contour-a"></div><div class="travel-contour contour-b"></div><div class="travel-route"><i></i><i></i><i></i><span>↗</span></div><div class="travel-ticket"><small>YOUR NEXT STOP</small><b>Somewhere<br>beautiful.</b><span>DISCOVER MORE ↗</span></div></div>
+            <div class="text-cover-main wherenext-cover-main"><p class="cover-mini-label">TOURS & TRAVEL</p><strong>WhereNext</strong><span class="cover-descriptor">Plan the next trip, one clear step at a time.</span><span class="cover-stack">PHP LARAVEL <i>·</i> JAVASCRIPT <i>·</i> MYSQL</span></div><span class="cover-hover"><span>OPEN PROJECT</span><b>↗</b></span>
+          </a>
+          <div class="project-copy"><div class="project-overline"><span class="project-type"><i class="type-dot type-blue"></i> TRAVEL / WEB</span><span class="project-number">03</span></div><h3><a href="project.html?project=wherenext">WhereNext <span class="title-arrow">↗</span></a></h3><p>A tours and travel booking website project exploring destination discovery and a clearer trip-planning journey.</p><div class="project-tags"><span>PHP / Laravel</span><span>JavaScript</span><span>MySQL</span></div><a class="project-text-link" href="project.html?project=wherenext">View WhereNext <span>↗</span></a></div>
+        </article>
+      </div>
+      <div class="academic-bottom-row reveal"><p><span class="academic-bottom-mark">✳</span><span>ACADEMIC WORK / DESCRIPTIONS AND TECHNOLOGY LABELS SHOULD MATCH THE ACTUAL SUBMITTED PROJECTS.</span></p><a href="#work" class="academic-back-to-feature">Back to SAATHI <span>↗</span></a></div>
+    </section>
+
+    <section class="process-section section-wrap" id="process" aria-labelledby="processHeading">
+      <div class="process-backdrop" aria-hidden="true"></div>
+      <div class="section-head reveal"><div><p class="section-kicker"><span>03</span> / HOW I APPROACH DESIGN</p><h2 id="processHeading">Thoughtful by<br><em>process.</em></h2></div><div class="section-head-side"><p>A flexible approach that keeps the problem, the people using the product, and the details of the interface in view.</p></div></div>
+      <div class="process-rail reveal" aria-hidden="true"><span class="process-rail-fill"></span><i></i><i></i><i></i><i></i></div>
+      <div class="process-grid">
+        <article class="process-card process-card-understand reveal" data-step="01"><div class="process-card-head"><span class="process-no">01</span><span class="process-stage-label">FOUNDATION</span></div><div class="process-symbol process-symbol-one"><i></i><i></i><i></i></div><h3>Understand<span>.</span></h3><p>Clarify the goal, identify the user’s task and organise the information that matters.</p><div class="process-card-foot"><span class="process-verb">START WITH WHY</span><b>↗</b></div></article>
+        <article class="process-card process-card-explore reveal" data-step="02"><div class="process-card-head"><span class="process-no">02</span><span class="process-stage-label">DIRECTION</span></div><div class="process-symbol process-symbol-two"><i></i><i></i><i></i><i></i></div><h3>Explore<span>.</span></h3><p>Map the journey, compare directions and create wireframes before polishing the details.</p><div class="process-card-foot"><span class="process-verb">MAKE OPTIONS</span><b>↗</b></div></article>
+        <article class="process-card process-card-design reveal" data-step="03"><div class="process-card-head"><span class="process-no">03</span><span class="process-stage-label">CRAFT</span></div><div class="process-symbol process-symbol-three"><i></i><i></i><i></i></div><h3>Design<span>.</span></h3><p>Build hierarchy, typography, components and interactions into a consistent interface.</p><div class="process-card-foot"><span class="process-verb">BRING IT TO LIFE</span><b>↗</b></div></article>
+        <article class="process-card process-card-refine reveal" data-step="04"><div class="process-card-head"><span class="process-no">04</span><span class="process-stage-label">DETAIL</span></div><div class="process-symbol process-symbol-four"><i></i><i></i><i></i></div><h3>Refine<span>.</span></h3><p>Review the details, check different screen sizes and improve the experience where needed.</p><div class="process-card-foot"><span class="process-verb">MAKE IT CLEARER</span><b>↗</b></div></article>
+      </div>
+      <div class="process-summary reveal"><span class="process-summary-star">✳</span><p>One thoughtful loop, not a rigid checklist. <b>Design is iterative.</b></p><span class="process-summary-end">UNDERSTAND → MAKE → IMPROVE</span></div>
+    </section>
+
+    <section class="about-section section-wrap" id="about" aria-labelledby="aboutHeading">
+      <div class="about-art reveal" aria-hidden="true"><div class="about-art-grid"></div><div class="about-glow"></div><div class="about-orbit about-orbit-one"></div><div class="about-orbit about-orbit-two"></div><div class="about-monogram">N<span>.</span></div><div class="about-art-tag tag-top">ALWAYS LEARNING</div><div class="about-art-tag tag-bottom">DESIGN · THINK · MAKE</div><div class="about-sticker">✳</div></div>
+      <div class="about-copy"><p class="section-kicker reveal"><span>05</span> / A LITTLE ABOUT ME</p><h2 id="aboutHeading" class="reveal">Curious by nature.<br><em>Intentional</em> by design.</h2><p class="about-lead reveal">I’m Nisarg, an MCA student from Ahmedabad, India, building my foundation in UI/UX design.</p><p class="about-body reveal">I enjoy the space where technology meets people: understanding a task, organising information and shaping interfaces that feel clear and approachable. I’m learning by working through projects, paying attention to the small details and getting better at explaining the reason behind each design decision.</p><p class="about-body reveal">Right now, I’m focused on Figma, wireframing, prototyping, interface systems and the fundamentals of responsive front-end design.</p><a class="inline-link reveal" href="#contact">A little more conversation? <span>↗</span></a><div class="about-facts reveal"><div><span>BASED IN</span><b>Ahmedabad, India</b></div><div><span>CURRENT CHAPTER</span><b>MCA · Learning by doing</b></div></div></div>
+    </section>
+
+    <section class="skills-section section-wrap" id="skills" aria-labelledby="skillsHeading">
+      <div class="section-head reveal"><div><p class="section-kicker"><span>05</span> / MY TOOLKIT</p><h2 id="skillsHeading">Tools for turning<br><em>ideas into form.</em></h2></div><div class="section-head-side"><p>A growing toolkit across interface design and frontend fundamentals. I keep the focus on skills I’m actively learning and using.</p></div></div>
+      <div class="skills-layout">
+        <div class="skills-feature reveal"><div class="skills-feature-top"><span>CORE PRACTICE</span><span class="skills-spark">✳</span></div><h3>Good design is a system,<br>not a single screen.</h3><p>From early structure to reusable components, I’m learning to make interfaces more consistent, understandable and ready to adapt.</p><div class="skills-visual"><div class="skill-orbit orbit-a"></div><div class="skill-orbit orbit-b"></div><div class="skill-visual-card card-a"><span>Aa</span><i>TYPE</i></div><div class="skill-visual-card card-b"><span class="mini-swatch"></span><i>COLOUR</i></div><div class="skill-visual-card card-c"><span>⌘</span><i>COMPONENT</i></div><div class="skill-visual-dot"></div></div></div>
+        <div class="skill-list">
+          <article class="skill-row reveal"><div class="skill-icon icon-figma" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div><div class="skill-row-copy"><h3>Figma & UI/UX</h3><p>Interface design, wireframes, components, Auto Layout and prototyping.</p><div class="skill-pills"><span>UI Design</span><span>Wireframing</span><span>Prototyping</span><span>Components</span></div></div><span class="skill-row-arrow">↗</span></article>
+          <article class="skill-row reveal"><div class="skill-icon icon-web" aria-hidden="true"><span>&lt;/&gt;</span></div><div class="skill-row-copy"><h3>Web fundamentals</h3><p>Building an understanding of how interfaces are structured and styled.</p><div class="skill-pills"><span>HTML</span><span>CSS</span><span>Responsive UI</span></div></div><span class="skill-row-arrow">↗</span></article>
+          <article class="skill-row reveal"><div class="skill-icon icon-js" aria-hidden="true"><span>JS</span></div><div class="skill-row-copy"><h3>Interactive basics</h3><p>Learning the fundamentals that make a website respond to users.</p><div class="skill-pills"><span>Basic JavaScript</span><span>Interactions</span></div></div><span class="skill-row-arrow">↗</span></article>
+          <article class="skill-row reveal"><div class="skill-icon icon-tools" aria-hidden="true"><span>✳</span></div><div class="skill-row-copy"><h3>Supporting tools</h3><p>Tools I use while exploring and communicating ideas.</p><div class="skill-pills"><span>Canva</span><span>VS Code</span><span>Git / GitHub</span></div></div><span class="skill-row-arrow">↗</span></article>
+        </div>
+      </div>
+      <div class="skills-bottom-note reveal"><span class="note-line"></span><span>Curiosity is part of the toolkit.</span><span class="note-spark">✳</span></div>
+    </section>
+
+    <section class="contact-section section-wrap" id="contact" aria-labelledby="contactHeading">
+      <div class="contact-glow" aria-hidden="true"></div><div class="contact-inner reveal"><p class="section-kicker"><span>06</span> / MAKE A CONNECTION</p><div class="contact-main"><div><h2 id="contactHeading">Something good<br>starts with <em>hello.</em></h2><p>I’m open to entry-level opportunities, feedback and conversations about thoughtful digital experiences.</p></div><a class="contact-email-button magnetic" href="mailto:nisargpatel1807@gmail.com" aria-label="Send an email to Nisarg Patel"><span class="email-button-icon">✉</span><span class="email-button-copy"><small>DIRECT CONTACT</small><strong>Send me an email</strong><span class="email-button-address">nisargpatel1807@gmail.com</span></span><span class="email-button-arrow">↗</span></a></div><div class="contact-bottom"><a href="mailto:nisargpatel1807@gmail.com" class="email-text">nisargpatel1807@gmail.com <span>↗</span></a><span class="contact-location"><span class="live-dot"></span> AHMEDABAD, INDIA</span></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer section-wrap"><a class="brand footer-brand" href="#top" aria-label="Back to top"><span class="brand-symbol">N<span>.</span></span><span class="brand-copy">NISARG PATEL<small>DESIGN PORTFOLIO</small></span></a><p>Made with curiosity<span class="footer-heart">✳</span></p><div class="footer-right"><span>© <span id="year"></span> NISARG PATEL</span><a href="#top" class="back-top">BACK TO TOP <span>↑</span></a></div></footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+  <script src="live-effects.js"></script>
+</body>
+</html>

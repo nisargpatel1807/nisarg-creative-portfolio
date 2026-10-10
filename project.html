@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b12"><meta name="description" content="Project details and interface explorations by Nisarg Patel.">
+  <title>Project — Nisarg Patel</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="live-effects.css">
+</head>
+<body class="project-page">
+  <div class="live-backdrop" aria-hidden="true"></div>
+  <canvas class="live-field" id="liveField" aria-hidden="true"></canvas>
+  <div class="ambient ambient-one" aria-hidden="true"></div><div class="ambient ambient-two" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div><div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div><div class="cursor-dot" id="cursorDot" aria-hidden="true"></div><div class="cursor-ring" id="cursorRing" aria-hidden="true"><span>VIEW</span></div>
+  <header class="site-header" id="siteHeader"><nav class="nav-shell" aria-label="Main navigation"><a class="brand" href="index.html#top" aria-label="Nisarg Patel — home"><span class="brand-symbol">N<span>.</span></span><span class="brand-copy">NISARG PATEL<small>DESIGN PORTFOLIO</small></span></a><button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open navigation"><span></span><span></span></button><div class="nav-links" id="navLinks"><a href="index.html#work">Work</a><a href="index.html#process">Process</a><a href="index.html#about">About</a><a href="index.html#skills">Skills</a><a class="nav-contact magnetic" href="mailto:nisargpatel1807@gmail.com" aria-label="Email Nisarg Patel">Email <span class="arrow">↗</span></a></div></nav></header>
+  <main id="projectMain">
+    <section class="detail-hero section-wrap"><div class="breadcrumbs reveal"><a href="index.html">HOME</a><span class="crumb-sep">/</span><a href="index.html#work">SELECTED WORK</a><span class="crumb-sep">/</span><span id="breadcrumbName">PROJECT</span></div><div class="detail-overline reveal"><span class="live-dot"></span><span id="detailOverline">PROJECT DETAILS</span></div><h1 class="project-detail-title reveal" id="detailTitle">Project <em>details.</em></h1><p class="detail-lead reveal" id="detailLead"></p><div class="detail-meta reveal" id="detailMeta"></div><div class="detail-visual reveal" id="detailVisual"><img id="detailCover" src="assets/campuscore-cover.svg" alt="Illustrative CampusCore project preview" hidden><span class="detail-visual-label" id="detailVisualLabel">ILLUSTRATIVE CAMPUSCORE PREVIEW</span><div class="detail-no-visual" id="detailNoVisual" hidden><div class="detail-no-visual-mark" id="detailNoVisualMark">M</div><div><p id="detailNoVisualKicker">ACADEMIC PROJECT</p><h2 id="detailNoVisualTitle">Project overview</h2><p class="detail-no-visual-copy" id="detailNoVisualCopy"></p></div></div></div></section>
+    <div class="detail-content section-wrap">
+      <section class="detail-intro-grid reveal"><div><p class="detail-section-kicker">OVERVIEW / 01</p><h2 id="overviewHeading">The idea<br>behind the work.</h2></div><div class="detail-intro-copy"><p id="overviewCopy"></p><p id="overviewCopyTwo"></p><div class="detail-note" id="detailNote"><strong>Portfolio note:</strong> These are illustrative visuals. Replace them with real project screenshots and verify the content before sharing your portfolio.</div></div></section>
+      <section class="detail-chapter reveal"><div class="detail-chapter-head"><div><p class="detail-section-kicker">SCOPE / 02</p><h2>What it brings<br>together.</h2></div><p class="detail-chapter-intro" id="scopeIntro"></p></div><div class="detail-feature-grid" id="featureGrid"></div></section>
+      <section class="detail-chapter reveal"><div class="detail-chapter-head"><div><p class="detail-section-kicker">BUILD / 03</p><h2>Tools &<br>technology.</h2></div><p class="detail-chapter-intro" id="techIntro"></p></div><div class="detail-technology" id="techList"></div></section>
+      <section class="detail-chapter reveal"><div class="detail-chapter-head"><div><p class="detail-section-kicker">REFLECTION / 04</p><h2>Room to<br>keep improving.</h2></div><div><p class="detail-chapter-intro" id="reflectionCopy"></p><p class="detail-chapter-intro" style="margin-top:12px">Before sharing this case study publicly, add real screenshots, clarify your personal contribution and update this reflection with what you actually learned while building the project.</p></div></div></section>
+      <div class="detail-next reveal"><div><p>BACK TO THE COLLECTION</p><h3>More ideas, more things to make.</h3></div><a class="button button-primary magnetic" href="index.html#work"><span>View all work</span><span class="button-icon">↗</span></a></div>
+    </div>
+  </main>
+  <footer class="site-footer section-wrap detail-footer"><a class="brand footer-brand" href="index.html#top"><span class="brand-symbol">N<span>.</span></span><span class="brand-copy">NISARG PATEL<small>DESIGN PORTFOLIO</small></span></a><p>Made with curiosity<span class="footer-heart">✳</span></p><div class="footer-right"><span>© <span id="year"></span> NISARG PATEL</span><a href="#top" class="back-top">BACK TO TOP <span>↑</span></a></div></footer>
+  <script src="project.js"></script><script src="script.js"></script><script src="live-effects.js"></script>
+</body>
+</html>
