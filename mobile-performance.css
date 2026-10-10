@@ -6,9 +6,9 @@
     transform: none !important;
     transition: none !important;
   }
-  /* The canvas keeps a small live constellation; JS reduces particles, resolution and frame rate. */
+  /* Keep the constellation visible on phones; JS limits particle count, resolution and frame rate. */
   .live-field {
-    opacity: .24 !important;
+    opacity: .42 !important;
     mix-blend-mode: normal !important;
   }
   .live-backdrop::before {

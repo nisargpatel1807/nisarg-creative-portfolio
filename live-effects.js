@@ -14,7 +14,7 @@
   const targetFrameInterval = mobileOptimized ? 48 : 27; // ~21 fps on phones, ~36 fps on desktop
   const root = document.documentElement;
   const pointer = { x: -9999, y: -9999, active: false };
-  let width = 0, height = 0, dpr = 1, particles = [], raf = 0, lastFrame = 0, time = 0;
+  let width = 0, height = 0, dpr = 1, particles = [], raf = 0, frameTimer = 0, lastFrame = 0, time = 0;
   let pointerTrail = [];
   const colors = [
     { rgb: '169, 153, 255', hue: 258 },
@@ -49,7 +49,7 @@
     canvas.style.height = `${height}px`;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     makeParticles();
-    if (reduced || mobileOptimized) draw(0, true);
+    if (reduced) draw(0, true);
   }
 
   function drawWaves(t) {
@@ -164,17 +164,43 @@
     if (!staticFrame && !mobileOptimized) drawPointerTrail(t);
   }
 
+  // Schedule the next draw at the target frame interval instead of running an
+  // animation-frame callback on every display refresh. Phones render at ~21 fps;
+  // desktops retain a smoother ~30-36 fps field.
+  function queueFrame(delay = 0) {
+    if (document.hidden || raf || frameTimer) return;
+    if (delay > 0) {
+      frameTimer = window.setTimeout(() => {
+        frameTimer = 0;
+        if (!document.hidden) raf = requestAnimationFrame(frame);
+      }, delay);
+    } else {
+      raf = requestAnimationFrame(frame);
+    }
+  }
+
   function frame(t) {
     raf = 0;
     if (document.hidden) return;
-    if (t - lastFrame < targetFrameInterval) { raf = requestAnimationFrame(frame); return; }
+    const elapsed = lastFrame ? t - lastFrame : targetFrameInterval;
+    if (elapsed < targetFrameInterval) {
+      queueFrame(targetFrameInterval - elapsed);
+      return;
+    }
     time = t;
     draw(t, false);
     lastFrame = t;
-    raf = requestAnimationFrame(frame);
+    queueFrame(targetFrameInterval);
   }
-  function start() { if (!reduced && !mobileOptimized && !raf && !document.hidden) raf = requestAnimationFrame(frame); }
-  function stop() { if (raf) cancelAnimationFrame(raf); raf = 0; }
+  function start() {
+    if (!reduced && !raf && !frameTimer && !document.hidden) raf = requestAnimationFrame(frame);
+  }
+  function stop() {
+    if (raf) cancelAnimationFrame(raf);
+    if (frameTimer) window.clearTimeout(frameTimer);
+    raf = 0;
+    frameTimer = 0;
+  }
 
   window.addEventListener('resize', resize, { passive: true });
   window.addEventListener('pointermove', event => {
@@ -189,7 +215,7 @@
   document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); else start(); });
 
   resize();
-  if (!reduced && !mobileOptimized) start();
+  if (!reduced) start();
 
   // Card spotlight and restrained 2.2-degree tilt add responsive live feedback.
   if (finePointer && !reduced) {
