@@ -9,6 +9,9 @@
   if (!ctx) return;
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  // Touch-first devices use a lighter rendering profile to keep scrolling smooth.
+  const mobileOptimized = window.matchMedia('(max-width: 800px)').matches || !finePointer;
+  const targetFrameInterval = mobileOptimized ? 48 : 27; // ~21 fps on phones, ~36 fps on desktop
   const root = document.documentElement;
   const pointer = { x: -9999, y: -9999, active: false };
   let width = 0, height = 0, dpr = 1, particles = [], raf = 0, lastFrame = 0, time = 0;
@@ -22,7 +25,9 @@
 
   const rand = (min, max) => min + Math.random() * (max - min);
   const makeParticles = () => {
-    const count = Math.max(26, Math.min(window.innerWidth < 700 ? 34 : 76, Math.round((width * height) / 21000)));
+    const count = mobileOptimized
+      ? Math.max(10, Math.min(16, Math.round((width * height) / 35000)))
+      : Math.max(26, Math.min(76, Math.round((width * height) / 21000)));
     particles = Array.from({ length: count }, (_, i) => {
       const color = colors[i % colors.length];
       return {
@@ -37,7 +42,7 @@
   function resize() {
     width = Math.max(1, window.innerWidth);
     height = Math.max(1, window.innerHeight);
-    dpr = Math.min(window.devicePixelRatio || 1, window.innerWidth < 700 ? 1.25 : 1.5);
+    dpr = Math.min(window.devicePixelRatio || 1, mobileOptimized ? 1 : 1.35);
     canvas.width = Math.floor(width * dpr);
     canvas.height = Math.floor(height * dpr);
     canvas.style.width = `${width}px`;
@@ -53,7 +58,7 @@
       ['rgba(109, 231, 255, 0.04)', 'rgba(158, 125, 255, 0.14)', 'rgba(109, 231, 255, 0.025)'],
       ['rgba(176, 148, 255, 0.04)', 'rgba(79, 239, 208, 0.10)', 'rgba(176, 148, 255, 0.02)']
     ];
-    const bands = [0.21, 0.43, 0.67, 0.86];
+    const bands = mobileOptimized ? [0.27, 0.73] : [0.21, 0.43, 0.67, 0.86];
     bands.forEach((base, i) => {
       const amp = Math.min(31, height * 0.045) * (i % 2 ? 0.72 : 1);
       const phase = t * (0.00016 + i * 0.000015) + i * 1.73;
@@ -61,7 +66,7 @@
       const c = palette[i % palette.length];
       grad.addColorStop(0, c[0]); grad.addColorStop(.52, c[1]); grad.addColorStop(1, c[2]);
       ctx.beginPath();
-      for (let x = -22; x <= width + 24; x += 16) {
+      for (let x = -22; x <= width + 24; x += mobileOptimized ? 30 : 16) {
         const nx = x / Math.max(1, width);
         let y = height * base + Math.sin(x * 0.0042 + phase) * amp + Math.sin(x * 0.0091 - phase * 1.2) * amp * .27 + Math.cos(nx * Math.PI * 2 + phase * .65) * amp * .23;
         if (pointer.active) {
@@ -79,7 +84,7 @@
   }
 
   function drawParticles(t, staticFrame = false) {
-    const maxLink = width < 600 ? 94 : 138;
+    const maxLink = mobileOptimized ? 72 : (width < 600 ? 94 : 138);
     if (!staticFrame) {
       const step = lastFrame ? Math.min(1.8, (t - lastFrame) / 16.67) : 1;
       particles.forEach(p => {
@@ -127,7 +132,7 @@
       ctx.beginPath(); ctx.arc(a.x, a.y, a.r + (staticFrame ? 0 : Math.max(0, pulse * .35)), 0, Math.PI * 2);
       ctx.fillStyle = `rgba(${a.color.rgb},${a.alpha * pulse})`;
       ctx.fill();
-      if (a.r > 1.25 && !staticFrame) {
+      if (a.r > 1.25 && !staticFrame && !mobileOptimized) {
         const glow = ctx.createRadialGradient(a.x, a.y, 0, a.x, a.y, a.r * 5.7);
         glow.addColorStop(0, `rgba(${a.color.rgb},.15)`); glow.addColorStop(1, `rgba(${a.color.rgb},0)`);
         ctx.fillStyle = glow; ctx.beginPath(); ctx.arc(a.x, a.y, a.r * 5.7, 0, Math.PI * 2); ctx.fill();
@@ -156,13 +161,13 @@
     ctx.clearRect(0, 0, width, height);
     drawWaves(t);
     drawParticles(t, staticFrame);
-    if (!staticFrame) drawPointerTrail(t);
+    if (!staticFrame && !mobileOptimized) drawPointerTrail(t);
   }
 
   function frame(t) {
     raf = 0;
     if (document.hidden) return;
-    if (t - lastFrame < 27) { raf = requestAnimationFrame(frame); return; } // cap background drawing at ~36fps
+    if (t - lastFrame < targetFrameInterval) { raf = requestAnimationFrame(frame); return; }
     time = t;
     draw(t, false);
     lastFrame = t;
@@ -173,7 +178,7 @@
 
   window.addEventListener('resize', resize, { passive: true });
   window.addEventListener('pointermove', event => {
-    if (!finePointer || reduced) return;
+    if (!finePointer || mobileOptimized || reduced) return;
     pointer.x = event.clientX; pointer.y = event.clientY; pointer.active = true;
     pointerTrail.push({ x: pointer.x, y: pointer.y, t: performance.now() });
     if (pointerTrail.length > 16) pointerTrail.shift();

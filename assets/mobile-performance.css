@@ -1,0 +1,73 @@
+/* Mobile performance layer: retains the visual identity while reducing GPU-heavy work. */
+@media (max-width: 800px), (hover: none) and (pointer: coarse) {
+  /* The canvas keeps a small live constellation; JS reduces particles, resolution and frame rate. */
+  .live-field {
+    opacity: .24 !important;
+    mix-blend-mode: normal !important;
+  }
+  .live-backdrop::before {
+    inset: -8% !important;
+    filter: blur(7px) saturate(1.02) !important;
+    opacity: .66 !important;
+    animation-duration: 52s !important;
+    will-change: auto !important;
+  }
+  .live-backdrop::after {
+    opacity: .18 !important;
+    mask-image: none !important;
+    background-size: auto, 76px 76px, 76px 76px !important;
+  }
+  /* These large blurred layers are decorative, so phones don't need to rasterize them. */
+  .ambient, .pointer-glow, .grain { display: none !important; }
+  .visual-halo {
+    filter: blur(14px) !important;
+    animation-duration: 24s !important;
+    opacity: .55 !important;
+  }
+  .hero-art {
+    filter: none !important;
+    mix-blend-mode: normal !important;
+    animation: none !important;
+  }
+  .glass-note, .saathi-float-chip, .saathi-float-label, .campus-cover-sticker,
+  .travel-ticket, .cover-hover {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+  /* Keep a couple of slow atmosphere transitions, disable multiple concurrent object loops. */
+  .saathi-phone-main, .saathi-phone-back, .saathi-float-chip, .saathi-float-label,
+  .saathi-field-orbit, .saathi-field-glow, .saathi-visual-shell::before,
+  .medcore-visual-system::before, .medcore-plus, .medcore-medicine-tile,
+  .travel-sun, .travel-ticket, .contact-inner::after, .process-summary-star {
+    animation: none !important;
+  }
+  .saathi-visual-shell::before { filter: none !important; }
+  .saathi-field-glow, .contact-glow, .about-glow { filter: none !important; }
+  .contact-glow { display: none !important; }
+  .contact-inner::before { animation: none !important; }
+  .process-section::before, .featured-current-section::before {
+    animation: none !important;
+    filter: none !important;
+  }
+  .project-card, .project-cover, .process-card, .skill-row,
+  .featured-current-card, .contact-inner {
+    transform: none !important;
+    filter: none !important;
+  }
+  .project-card.is-lit { filter: none !important; }
+  .ticker-track { animation-duration: 52s !important; }
+  .live-ripple { animation-duration: .55s !important; }
+}
+
+/* Reduced-motion users get a calm static atmosphere regardless of device. */
+@media (prefers-reduced-motion: reduce) {
+  .live-backdrop::before, .ticker-track, .hero-art, .visual-halo,
+  .glass-note, .saathi-phone-main, .saathi-phone-back, .saathi-float-chip,
+  .saathi-float-label, .saathi-field-orbit, .saathi-field-glow,
+  .medcore-visual-system::before, .medcore-plus, .medcore-medicine-tile,
+  .travel-sun, .travel-ticket, .contact-inner::before, .contact-inner::after,
+  .process-section::before, .featured-current-section::before {
+    animation: none !important;
+  }
+  .live-field { opacity: .12 !important; }
+}
